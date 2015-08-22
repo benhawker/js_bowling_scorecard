@@ -29,6 +29,15 @@ describe("Game", function() {
     });
   });
 
+  //basic implementation to begin
+  describe("frame counter", function() {
+    it("moves to the next frame after 2 rolls", function() {
+      game.rollBall(0);
+      game.rollBall(0);
+      expect(game.fframe).toEqual(2);
+    });
+  });
+
 });
 
 
