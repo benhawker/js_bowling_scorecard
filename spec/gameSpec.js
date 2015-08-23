@@ -56,7 +56,52 @@ describe("Game", function() {
         rollStrike();
         game.roll(5);
         game.roll(3);
+        rollMany(17, 0);
         expect(game.score()).toEqual(26);
+      });
+    });
+
+    describe("Perfect game", function() {
+      it("should score 300", function() {
+        rollMany(12, 10);
+        expect(game.score()).toEqual(300);
+      });
+    });
+
+     describe("Entire sample game", function() {
+      it("should score it correctly!", function() {
+        // 1st Frame
+        game.roll(4);
+        game.roll(4);
+        // 2nd Frame
+        game.roll(3);
+        game.roll(2);
+        // 3rd Frame
+        game.roll(7);
+        game.roll(0);
+        // 4th Frame
+        game.roll(10);
+        // 5th Frame
+        game.roll(4);
+        game.roll(4);
+        // 6th Frame
+        game.roll(4);
+        game.roll(4);
+        // 7th Frame
+        game.roll(5);
+        game.roll(2);
+        // 8th Frame
+        game.roll(7);
+        game.roll(2);
+        // 9th Frame
+        game.roll(0);
+        game.roll(10);
+        // 10th Frame
+        game.roll(6);
+        game.roll(4);
+        game.roll(6);
+
+        expect(game.score()).toEqual(98);
       });
     });
 
