@@ -1,7 +1,7 @@
-// function Song() {
-// }
+function Score() {
+	this.frameScore = 0;
+}
 
-// Song.prototype.persistFavoriteStatus = function(value) {
-//   // something complicated
-//   throw new Error("not yet implemented");
-// };
+Score.prototype.calculateFrameScore = function() {
+	 this.frameScore = 5 + 5;
+};

@@ -1,11 +1,23 @@
-// describe("Player", function() {
-//   var player;
-//   var song;
+describe("Score", function() {
+  var game;
+  var score;
 
-//   beforeEach(function() {
-//     player = new Player();
-//     song = new Song();
-//   });
+  beforeEach(function() {
+    game = new Game();
+    score = new Score();
+  });
+
+
+  describe("frame score", function() {
+    it("logs the score for the first frame", function() {
+      game.rollBall(5);
+      game.rollBall(5);
+      expect(score.calculateFrameScore()).toEqual(10);
+    });
+  });
+
+
+});
 
 //   it("should be able to play a Song", function() {
 //     player.play(song);
