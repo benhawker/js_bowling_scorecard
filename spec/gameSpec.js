@@ -1,46 +1,118 @@
 describe("Game", function() {
 
   var game;
+  var rollMany;
+  var rollSpare;
+  var rollStrike;
 
   beforeEach(function() {
     game = new Game();
   });
 
 
-  describe("single throws", function() {
-    it("records a gutter ball as 0", function() {
-      game.rollBall(0);
-      expect(game.results[0]).toEqual(0);
+  rollMany = function(rolls, pins) {
+    var i;
+    for (i = 0; i < rolls; i++) {
+          game.roll(pins);
+        }
+  };
+
+
+  rollSpare = function() {
+    game.roll(5);
+    game.roll(5);
+  };
+
+  rollStrike = function() {
+    game.roll(10);
+  };
+
+  describe("Bowling Game Kata", function() {
+    
+    describe("Gutter game", function() {
+      it("should score zero given all rolls hit no pins", function() {
+        rollMany(20, 0)
+        expect(game.score()).toEqual(0);
+      });
     });
 
-    it("record a 5 as 5", function() {
-      game.rollBall(5);
-      expect(game.results[0]).toEqual(5);
+    describe("When all rolls hit only 1 pin", function() {
+      it("should score 20 given all rolls hit 1 pin", function() {
+        rollMany(20, 1);
+        expect(game.score()).toEqual(20);
+      });
     });
 
-    it("records a strike ball as 10", function() {
-      game.rollBall(10);
-      expect(game.results[0]).toEqual(10);
+    describe("Game with one spare", function() {
+      it("should score 20 given the first 3 rolls hit 5 pins", function() {
+        rollSpare();
+        game.roll(5);
+        expect(game.score()).toEqual(20);
+      });
+    });
+
+    describe("Game with one strike", function() {
+      it("should score 26 given 1 strike followed by 2 rolls hitting 5 & 3", function() {
+        rollStrike();
+        game.roll(5);
+        game.roll(3);
+        expect(game.score()).toEqual(26);
+      });
     });
 
   });
 
-  // may not required as can count positions of array to determine.
-  describe("roll counter", function() {
-    it("a roll adds 1 to the roll counter", function() {
-      game.rollBall(0);
-      expect(game.rolls).toEqual(1);
-    });
-  });
+
+  // describe("single throws", function() {
+  //   it("records a gutter ball as 0", function() {
+  //     game.rollBall(0);
+  //     expect(game.results[0]).toEqual(0);
+  //   });
+
+  //   it("record a 5 as 5", function() {
+  //     game.rollBall(5);
+  //     expect(game.results[0]).toEqual(5);
+  //   });
+
+  //   it("records a strike ball as 10", function() {
+  //     game.rollBall(10);
+  //     expect(game.results[0]).toEqual(10);
+  //   });
+
+  // });
+
+  // // may not required as can count positions of array to determine.
+  // describe("roll counter", function() {
+  //   it("a roll adds 1 to the roll counter", function() {
+  //     game.rollBall(0);
+  //     expect(game.rolls).toEqual(1);
+  //   });
+  // });
+
+  // describe("goes through the frames as throws are made", function () {
+  //   it("states current frame correctly after 2 rolls", function() {
+  //     game.rollBall(0);
+  //     game.rollBall(0);
+  //     expect(game.currentFrameNumber).toEqual(2);
+  //   });
+  // });
+
+  // describe("stores rolls in results", function () {
+  //   it("stores the first 2 rolls in the first frame", function() {
+  //     game.rollBall(0);
+  //     game.rollBall(0);
+  //     expect(game.results[0]).toEqual([0,0]);
+  //   });
+  // });
 
 
-  describe("whole game sample throws", function() {
-    it("records a game of 20 gutter balls", function() {
-      game.rollMultipleBalls(20, 0);
-      expect(game.finalScore).toEqual(0);
-    });
+  // describe("whole game sample throws", function() {
+  //   it("records a game of 20 gutter balls", function() {
+  //     game.rollMultipleBalls(20, 0);
+  //     expect(game.totalScore).toEqual(0);
+  //   });
 
-  });
+  // });
 
 
   // //basic implementation to begin
