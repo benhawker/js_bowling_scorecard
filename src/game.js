@@ -1,9 +1,4 @@
 function Game() {
-// 	// this.results = [];
-// 	// this.pins = 10;
-// 	// this.rolls = 0;
-// 	// this.currentFrameNumber = 1;
-// 	// this.totalScore = 0;
 	this._score = 0;
 	this._rolls = [];
 	this._current = 0;
@@ -53,6 +48,14 @@ Game.prototype._hasBonusRoll = function() {
 	hasBonus = (this._isStrike(tenthFrame) || this._isSpare(tenthFrame));
 	return (hasBonus) ? tenthFrame : null;
 };
+
+
+// 	// this.results = [];
+// 	// this.pins = 10;
+// 	// this.rolls = 0;
+// 	// this.currentFrameNumber = 1;
+// 	// this.totalScore = 0;
+
 
 // Game.prototype._isSpare = function(roll) {
 // 	return this._roll(ro)

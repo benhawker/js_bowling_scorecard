@@ -1,7 +1,7 @@
-function Score() {
-	this.frameScore = 0;
-}
+// function Score() {
+// 	this.frameScore = 0;
+// }
 
-Score.prototype.calculateFrameScore = function() {
-	 this.frameScore = 5 + 5;
-};
+// Score.prototype.calculateFrameScore = function() {
+// 	 this.frameScore = 5 + 5;
+// };
